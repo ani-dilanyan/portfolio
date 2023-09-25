@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if programmer_list %}
+    <ul>
+        {% for programmer in programmer_list%}
+        <li><a href="{% url 'main_app:details' programmer.id %}">{{ programmer.user.first_name }} {{ programmer.user.last_name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>No programmers listed</h3>
+    {% endif %}
+
+    <a href="">add new programmer</a>
+</body>
+</html>
