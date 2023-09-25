@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body style="display: flex; justify-content: center; align-items: center;">
-    <form action="" method="post">
-        <!-- {% csrf_token %} -->
+    <form action="{% url 'main_app:add_programmer' %}" method="post">
+        {% csrf_token %}
         <label for="fname">Fist name: </label>
         <input type="text" id="fname" name="fname"><br><br>
 
