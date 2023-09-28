@@ -46,3 +46,21 @@ def add_programmer(request):
     
     return render(request, "main_app/add_programmer.html")
 
+
+def add_project(request, programmer_id):
+    if request.method == 'POST':
+        programmer = get_object_or_404(Programmer, pk=programmer_id)
+        name = request.POST["name"]
+        description = request.POST["description"]
+
+        project = Project(programmer = programmer, name = name, description = description)
+        project.save()
+
+        return redirect(f"http://localhost:8000/{programmer_id}")
+    elif request.method == 'GET':
+        programmer = get_object_or_404(Programmer, pk=programmer_id)
+        return render(request, "main_app/add_project.html", {"programmer": programmer})
+
+
+
+    

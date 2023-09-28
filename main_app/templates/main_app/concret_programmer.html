@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h2>Personal Info</h2>
 
@@ -13,19 +15,22 @@
         <li>Age: {{ programmer.age}}</li>
         <li>Language: {{ programmer.language}}</li>
         <li>Framework: {{ programmer.framework}}</li>
-        <li>Experience: {{ programmer.experience}}</li>       
+        <li>Experience: {{ programmer.experience}}</li>
 
     </ul>
 
     <h2>Projects</h2>
+
+    {% for project in programmer.project_set.all %}
     <ul>
-        {% for project in programmer.project_set.all %}
         <li>Project name: {{ project.name }}</li>
         <li>Project description: {{project.description}}</li>
-        {% endfor %}
     </ul>
+    {% endfor %}
 
-    <a href="">Add new project</a>
-    
+    <a href="{% url 'main_app:add_project' programmer.id %}">Add new project</a>
+
+
 </body>
+
 </html>
